@@ -17,9 +17,12 @@ module dimple_joints() {
 			  rotate([-30,0,0]) translate([x, 2, 7])
 					union() {
 						difference() {
-							cylinder(r1=(dimple-5)/2, r2=(dimple-4)/2, h=2, center=true, $fn=24);
-							translate([0,0,-1]) sphere(magnetsize);
-							
+							minkowski()
+							{
+								cylinder(r1=(dimple-4.5)/2, r2=(dimple-4.5)/2, h=2, center=true, $fn=32);
+								sphere(r=0.5,center=true);
+							}
+							translate([0,0,-2]) sphere(magnetsize, $fn=32);
 						}
 						//uncomment to show the magnet
 						//translate([0,0,-1]) sphere(magnetsize);
@@ -30,7 +33,7 @@ module dimple_joints() {
 module dimple_holes(msize) {
 			for (x = [-offset, offset]) {
 			  rotate([-30,0,0]) translate([x, 2, 7])
-						translate([0,0,-1]) sphere(msize);
+						translate([0,0,-2]) sphere(msize, $fn=32);
 			}
 }
 
@@ -42,14 +45,11 @@ module parallel_joints(reinforced) {
 					translate([0, 18, 6]) rotate([-30, 0, 0]) cube([width, reinforced+18.25, reinforced-3.25], center=true);
 					translate([0, 0, 6]) cube([width, reinforced+16, reinforced-4], center=true);
 				}
-				//translate([0, 8, 12]) cube([width, 16, 5], center=true);
 				translate([0, 8, 14.5]) cube([width, 16, 11], center=true);
 			}
 
 			dimple_joints();
-	//    translate([0, 0, 0]) cube([2*middle  -4, 20, 100], center=true);
 		}
-//    translate([0, 0, 0]) cube([2*middle  -4, 20, 100], center=true);
 		dimple_holes(magnetsize);
 	}
 }
@@ -58,10 +58,10 @@ module lm8uu_mount(d, h) {
   union() {
     difference() {
       intersection() {
-        cylinder(r=11, h=h, center=true);
+        cylinder(r=11, h=h, center=true, $fn=64);
         translate([0, -8, 0]) cube([19, 13, h+1], center=true);
       }
-      cylinder(r=d/2, h=h+1, center=true);
+      cylinder(r=d/2, h=h+1, center=true, $fn=64);
     }
   }
 }
