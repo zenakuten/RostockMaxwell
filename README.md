@@ -1,6 +1,13 @@
-#Rostock Mini Mag
+#Rostock Maxwell
 
-These are the rostock mini files, modified for use with 3/8" sphere magnets.  
+<img src="pics/a_IMG_1435.jpg" style="width:100%;" title="Rostock Maxwell">
 
-Pictures here:
-http://imgur.com/a/URcNC#0
+This is a modified Rostock Mini.  Modifications include:
+
+- Magnet joints 
+- Aluminum extruder
+- Floating build plate
+- Rigid idler ends
+- Heated build chamber
+
+Pictures [here](http://imgur.com/a/URcNC#0)
